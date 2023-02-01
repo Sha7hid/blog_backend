@@ -9,7 +9,9 @@ const Blog = mongoose.model('Content',{
         required:true
     },
     date:{
-        type:Date,
+        type:String,
+        format:Date,
+        example:"2021-01-30",
         required:true
     },
     content:{

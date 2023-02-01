@@ -12,7 +12,7 @@ const connectDB = require('./config/db');
 dotenv.config({path: './config/config.env'});
 
 connectDB();
-
+const port = 3000;
 // Routes
 app.use('/', require('./routes/index'));
-app.listen(process.env.PORT);
+app.listen(port);
