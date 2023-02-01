@@ -11,7 +11,7 @@ const connectDB = require('./config/db');
 const mongo_uri =`mongodb+srv://shahid:arthur540913@cluster2.ggcnvuy.mongodb.net/Blog`
 
 connectDB();
-const port = 3000;
+const port = 0000;
 // Routes
 app.use('/', require('./routes/index'));
 app.listen(port);
