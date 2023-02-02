@@ -12,6 +12,7 @@ const mongo_uri =`mongodb+srv://shahid:arthur540913@cluster2.ggcnvuy.mongodb.net
 
 connectDB();
 const port = process.env.PORT || 3000
+console.log({port});
 // Routes
 app.use('/', require('./routes/index'));
 app.listen(port);
