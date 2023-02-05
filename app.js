@@ -14,5 +14,5 @@ connectDB();
 const port = process.env.PORT || 3000
 console.log({port});
 // Routes
-app.use(`blogbackend-production-af81.up.railway.app`, require('./routes/index'));
+app.use('/', require('./routes/index'));
 app.listen(port);
