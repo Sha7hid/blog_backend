@@ -14,5 +14,5 @@ connectDB();
 const port = process.env.PORT || 3000
 console.log({port});
 // Routes
-app.use('/', require('./routes/index'));
+app.use('/api', require('./routes/index'));
 app.listen(port);
