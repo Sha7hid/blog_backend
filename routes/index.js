@@ -5,7 +5,7 @@ const router = express.Router();
 const {Blog} = require('../models/blog');
 
 // Get All Blogs
-router.get('/api/blogs', (req, res)=> {
+router.get('/blogs', (req, res)=> {
     Blog.find({}, (err, data)=> {
         if (!err) {
             res.send(data);
@@ -15,7 +15,7 @@ router.get('/api/blogs', (req, res)=> {
     })
 });
 // Save Blog 
-router.post('/api/blog/add', (req,res) => {
+router.post('/blog/add', (req,res) => {
     const blo = new Blog({
         heading: req.body.heading,
         date: req.body.date,
@@ -23,13 +23,18 @@ router.post('/api/blog/add', (req,res) => {
         image: req.body.image
     });
     blo.save((err, data) => {
-        res.status(200).json({code:200, message:'Blog Added Successfully',
+        if (!err) {
+            res.status(200).json({code:200, message:'Blog Added Successfully',
         addEmployee:data})
+        } else {
+            console.log(err);
+        }
+       
     })
 });
 
 // GEt Single Blog
-router.get('/api/blog/:id', (req, res) => {
+router.get('/blog/:id', (req, res) => {
     Blog.findById(req.params.id,(err, data)=>{
         if (!err) {
             res.send(data);
@@ -39,7 +44,7 @@ router.get('/api/blog/:id', (req, res) => {
     })
 });
 // Update Blog
-router.put('/api/blog/edit/:id',(req, res)=>{
+router.put('/blog/edit/:id',(req, res)=>{
 const blo = {
     heading: req.body.heading,
     date: req.body.date,
@@ -56,7 +61,7 @@ Blog.findByIdAndUpdate(req.params.id, {$set:blo}, {new:true}, (err, data)=> {
 })
 });
 // Delete Blog
-router.delete('/api/blog/:id', (req, res)=>{
+router.delete('/blog/:id', (req, res)=>{
     Blog.findByIdAndDelete(req.params.id, (err, data)=>{
         if (!err) {
             res.status(200).json({code:200, message:'Blog Deleted Successfully',
